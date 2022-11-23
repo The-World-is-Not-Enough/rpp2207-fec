@@ -88,6 +88,7 @@ const App = () => {
         stars.push(fullStar(i, 'e', key))
       }
     }
+
     return stars;
   }
 
