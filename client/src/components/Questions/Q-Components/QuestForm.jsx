@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const QuestForm = ({ closeForm }) => {
+const QuestForm = ({ closeForm, itemName, productId }) => {
   let [question, setQuestion] = useState('');
   let [name, setName] = useState('');
   let [email, setEmail] = useState('');
@@ -13,12 +13,12 @@ const QuestForm = ({ closeForm }) => {
 
   var submit = () => {
     var data = {
-      productId: null,
+      productId: productId,
       body: question,
       name: name,
       email: email
     };
-    return data;
+    closeForm();
   };
 
   return (
@@ -30,7 +30,7 @@ const QuestForm = ({ closeForm }) => {
           onClick={closeForm}
         >X</button>
         <h1 id="form-title">Ask Your Question</h1>
-        <h2 id="form-subtitle">About the ITEM_NAME_HERE</h2>
+        <h2 id="form-subtitle">About the {itemName}</h2>
       </header>
       <div className="form-body">
         <div id="form-question">

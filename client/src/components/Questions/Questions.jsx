@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import questionAPI from '../../API/Questions.js';
+import React, { useState } from 'react';
 import Search from './Search.jsx';
 import QuestList from './Q-Components/QuestList.jsx';
 import AnsForm from './A-Components/AnsForm.jsx';
@@ -7,49 +6,41 @@ import QuestForm from './Q-Components/QuestForm.jsx';
 import './qna.css';
 
 const Questions = (props) => {
-  let [data, setData] = useState([]);
-  let [questions, setQuestions] = useState([]);
-  let [onAns, setOnAns] = useState(false);
-  let [onQuest, setOnQuest] = useState(false);
-
-
-  useEffect(() => {
-    questionAPI.getAllQuestions(props.objID)
-      .then(results => {
-        setData(results);
-        setQuestions(results);
-      })
-      .catch(err => console.log(err));
-  }, [props.objID]);
+  console.log(props.data);
+  const data = props.data;
+  let [questions, setQuestions] = useState(data.questions);
+  let [form, setForm] = useState(0);
 
   var handleSearch = (term) => {
-    var results = data.filter(q => {
+    var results = data.questions.filter(q => {
       return q.question_body.toLowerCase().includes(term.toLowerCase());
     });
     setQuestions(results);
   };
 
-  var openAnsForm = () => { setOnAns(true); };
-  var closeAnsForm = () => { setOnAns(false); };
-
-  var openQuestForm = () => { setOnQuest(true); };
-  var closeQuestForm = () => { setOnQuest(false); };
+  var openForm = (id) => {
+    console.log(id);
+    setForm(id);
+  };
+  var closeForm = () => { setForm(0); };
 
   return (
     <div id="qna" className="qna-container">
-      {onAns ?
-        <AnsForm closeForm={closeAnsForm}/> : null
+      {form > 0 ?
+        <AnsForm closeForm={closeForm}/> : null
       }
-      {onQuest ?
-        <QuestForm closeForm={closeQuestForm}/> : null
+      {form < 0 ?
+        <QuestForm
+          closeForm={closeForm}
+          itemName={data.product.name}
+          productId={data.id}
+        /> : null
       }
       <h1 className="qna-title">Q & A</h1>
       <Search handleSearch={handleSearch}/>
       <QuestList
         questions={questions}
-        length={questions.length}
-        openAnsForm={openAnsForm}
-        openQuestForm={openQuestForm}
+        openForm={openForm}
       />
     </div>
   );

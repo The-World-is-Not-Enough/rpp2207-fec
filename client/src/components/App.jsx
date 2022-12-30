@@ -109,7 +109,7 @@ const App = (props) => {
       <h1>App.jsx</h1>
       <Overview objID={id} yourOutfit={yourOutfit} addToOutfit={addToOutfit} setScrollToRatings={setScrollToRatings} generateStars={generateStars} data={props.data} />
       <Related objID={id} yourOutfit={yourOutfit} addToOutfit={addToOutfit} removeFromOutfit={removeFromOutfit} generateStars={generateStars} />
-      <Questions objID={id}/>
+      <Questions objID={id} data={props.data}/>
       <div ref={ratingsRef}>
         <Ratings objID={id} generateStars={generateStars} />
       </div>

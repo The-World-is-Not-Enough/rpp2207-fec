@@ -14,7 +14,6 @@ const questionAPI = {
         return results.json();
       })
       .then(results => {
-        console.log(results.results);
         return results.results;
       })
       .catch(err => {

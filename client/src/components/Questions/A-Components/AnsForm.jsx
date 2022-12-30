@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AnsForm = ({ closeForm }) => {
+const AnsForm = ({ closeForm, itemName, questionBody, questionId }) => {
   let [answer, setAnswer] = useState('');
   let [name, setName] = useState('');
   let [email, setEmail] = useState('');
@@ -20,7 +20,7 @@ const AnsForm = ({ closeForm }) => {
       email: email,
       photos: photos
     };
-    return data;
+    closeForm();
   };
 
   return (
@@ -28,7 +28,8 @@ const AnsForm = ({ closeForm }) => {
       <header className="form-header">
         <button id="form-close" className="btn" onClick={closeForm}>X</button>
         <h1 id="form-title">Submit Your Answer</h1>
-        <h2 id="form-subtitle">ITEM_NAME_HERE: QUESTION_BODY_HERE</h2>
+        <h2 id="form-subtitle">{itemName}</h2>
+        <h2 id="form-subtitle">{questionBody}</h2>
       </header>
       <div className="form-body">
         <div id="form-question">

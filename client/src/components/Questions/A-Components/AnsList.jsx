@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import questionAPI from '../../../API/Questions.js';
 import Answer from './Answer.jsx';
 
 const AnsList = (props) => {
   let [answers, setAnswers] = useState([]);
   let [rendered, setRendered] = useState([]);
-  let [num, setNum] = useState(2);
+
+  var handleCollapse = () => { setRendered([ answers[0], answers[1] ]); };
+  var handleMore = () => {
+    let rl = rendered.length;
+    let al = answers.length;
+    setRendered(al - rl > 2 ? [...rendered, answers[rl], answers[rl + 1]] : answers);
+  };
 
   useEffect(() => {
     var ans = Object.values(props.ans);
@@ -24,30 +29,9 @@ const AnsList = (props) => {
         next = curr + 1;
       }
     }
-    console.log(ans[0].photos[0]);
-    setRendered(ans.length < 2 ? ans : [ans[0], ans[1]]);
-    setNum(ans.length < 2 ? 1 : 2);
     setAnswers(ans);
+    setRendered(ans.length > 2 ? [ans[0], ans[1]] : ans);
   }, [props.ans]);
-
-  var handleMore = () => {
-    var tempArr = rendered;
-    var tempNum = num;
-    if (answers.length - rendered.length >= 2) {
-      tempArr.push(answers[num]);
-      tempArr.push(answers[num + 1]);
-      tempNum += 2;
-    } else {
-      tempArr.push(answers[num]);
-      tempNum += 1;
-    }
-    setRendered(tempArr);
-    setNum(tempNum);
-  };
-
-  var handleCollapse = () => {
-    setRendered([ answers[0], answers[1] ]);
-  };
 
   return (
     <div id="a-content" className="qna-container">
