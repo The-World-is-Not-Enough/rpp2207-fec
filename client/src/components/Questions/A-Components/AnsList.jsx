@@ -8,9 +8,6 @@ const AnsList = (props) => {
   let [num, setNum] = useState(2);
 
   useEffect(() => {
-    // setAnswers(ans.map((answer) => {
-    //   var temp = Object.values(q.answers);
-    // }));
     var ans = Object.values(props.ans);
     var curr = 0;
     var next = 1;
@@ -27,6 +24,9 @@ const AnsList = (props) => {
         next = curr + 1;
       }
     }
+    console.log(ans[0].photos[0]);
+    setRendered(ans.length < 2 ? ans : [ans[0], ans[1]]);
+    setNum(ans.length < 2 ? 1 : 2);
     setAnswers(ans);
   }, [props.ans]);
 
@@ -47,7 +47,6 @@ const AnsList = (props) => {
 
   var handleCollapse = () => {
     setRendered([ answers[0], answers[1] ]);
-    setNum(2);
   };
 
   return (
@@ -57,7 +56,7 @@ const AnsList = (props) => {
           return (
             <Answer
               key={idx}
-              a_ID={a.answer_id}
+              a_ID={a.id}
               body={a.body}
               date={a.date}
               helpful={a.helpfulness}
@@ -70,7 +69,7 @@ const AnsList = (props) => {
       {rendered.length < answers.length ?
         <button id="more-a" className="btn" onClick={handleMore}> More Answers </button>
         : null}
-      {rendered.length === answers.length && num > 2 ?
+      {rendered.length > 2 ?
         <button id="collapse-a" className="btn" onClick={handleCollapse}> Collapse Answers </button>
         : null}
     </div>

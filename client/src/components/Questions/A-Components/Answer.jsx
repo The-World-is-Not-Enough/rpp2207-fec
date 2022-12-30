@@ -15,7 +15,7 @@ const Answer = (props) => {
             <img
               key={idx}
               className='thumbnail'
-              src={photo.url}
+              src={photo}
               alt={''}
             />
           );
