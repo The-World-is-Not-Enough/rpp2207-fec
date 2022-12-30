@@ -17,7 +17,7 @@ const Question = (props) => {
         helpful={props.helpful}
       />
       <div>
-        <AnsList q_ID={props.q_ID}/>
+        <AnsList ans={props.answers}/>
       </div>
     </div>
   );

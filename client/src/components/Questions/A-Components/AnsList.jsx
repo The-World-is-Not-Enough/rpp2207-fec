@@ -8,26 +8,34 @@ const AnsList = (props) => {
   let [num, setNum] = useState(2);
 
   useEffect(() => {
-    questionAPI.getAllAnswers(props.q_ID)
-      .then(results => {
-        setAnswers(results);
-        if (results.length >= 2) {
-          setRendered([ results[0], results[1] ]);
-          setNum(2);
-        } else {
-          setRendered(results);
-          setNum(1);
-        }
-      })
-      .catch(err => console.log(err));
-  }, [props.q_ID]);
+    // setAnswers(ans.map((answer) => {
+    //   var temp = Object.values(q.answers);
+    // }));
+    var ans = Object.values(props.ans);
+    var curr = 0;
+    var next = 1;
+    while (curr < ans.length - 1) {
+      if (ans[curr].helpfulness < ans[next].helpfulness) {
+        let temp = ans[curr];
+        ans[curr] = ans[next];
+        ans[next] = temp;
+      }
+      next++;
+
+      if (next === ans.length) {
+        curr++;
+        next = curr + 1;
+      }
+    }
+    setAnswers(ans);
+  }, [props.ans]);
 
   var handleMore = () => {
     var tempArr = rendered;
     var tempNum = num;
     if (answers.length - rendered.length >= 2) {
       tempArr.push(answers[num]);
-      tempArr.push(answers[num+1]);
+      tempArr.push(answers[num + 1]);
       tempNum += 2;
     } else {
       tempArr.push(answers[num]);
