@@ -2,7 +2,7 @@ import React from 'react';
 import AnsList from '../A-Components/AnsList.jsx';
 import HelpReport from '../HelpReport.jsx';
 
-const Question = ({ body, questionId, helpful, answers, openForm }) => {
+const Question = ({ body, questionId, helpful, answers, openForm, openModal }) => {
   return (
     <div className="question-container">
       <h1><strong>Q: </strong>{body}</h1>
@@ -17,7 +17,7 @@ const Question = ({ body, questionId, helpful, answers, openForm }) => {
         helpful={helpful}
       />
       <div>
-        <AnsList ans={answers}/>
+        <AnsList mixedAns={answers} openModal={openModal}/>
       </div>
     </div>
   );

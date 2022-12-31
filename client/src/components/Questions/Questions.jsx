@@ -10,6 +10,7 @@ const Questions = (props) => {
   const data = props.data;
   let [questions, setQuestions] = useState(data.questions);
   let [form, setForm] = useState(0);
+  let [modal, setModal] = useState('');
 
   var handleSearch = (term) => {
     var results = data.questions.filter(q => {
@@ -24,6 +25,9 @@ const Questions = (props) => {
   };
   var closeForm = () => { setForm(0); };
 
+  var openModal = (imgUrl) => { setModal(imgUrl); };
+  var closeModal = () => { setModal(''); };
+
   return (
     <div id="qna" className="qna-container">
       {form > 0 ?
@@ -36,11 +40,22 @@ const Questions = (props) => {
           productId={data.id}
         /> : null
       }
+      {modal ?
+        <div className="modal-thumbnail-container">
+          <button onClick={closeModal} className="modal-close">X</button>
+          <img
+            className="modal-thumbnail"
+            src={modal}
+            alt=""
+          />
+        </div> : null
+      }
       <h1 className="qna-title">Q & A</h1>
       <Search handleSearch={handleSearch}/>
       <QuestList
         questions={questions}
         openForm={openForm}
+        openModal={openModal}
       />
     </div>
   );

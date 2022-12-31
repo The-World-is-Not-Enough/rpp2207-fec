@@ -20,6 +20,7 @@ const AnsForm = ({ closeForm, itemName, questionBody, questionId }) => {
       email: email,
       photos: photos
     };
+    console.log(data, questionId);
     closeForm();
   };
 

@@ -4,6 +4,17 @@ import QuestionsAPI from './API/Questions.js';
 import RatingsAPI from './API/Ratings.js';
 import RelatedAPI from './API/Related.js';
 
+const Loading = () => {
+  return (
+    <div className="loader">
+      Loading
+      <span className="load-bounce"></span>
+      <span className="load-bounce" id="bounce-2"></span>
+      <span className="load-bounce" id="bounce-3"></span>
+    </div>
+  );
+};
+
 const FetchData = (WrappedComponent, id) => {
 
   class WithData extends React.Component {
@@ -108,7 +119,7 @@ const FetchData = (WrappedComponent, id) => {
       if (!this.state.fetching) {
         return <WrappedComponent data={this.state} {...this.props} />;
       } else {
-        return <p>Loading...</p>;
+        return <Loading />;
       }
     }
   }

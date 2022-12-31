@@ -153,6 +153,14 @@ strong {
 	border-radius: 5px;
 }
 
+.modal-thumbnail-container {
+	z-index: 5;
+	position: fixed;
+	max-width: 70%;
+	max-height: 70%;
+	right: 0;
+}
+
 /* Help/Report */
 .helpful-report,
 #report, #reported {
@@ -296,3 +304,4 @@ Figure out how to get item name ( Use getProductById in Overview.js )
 	background-color: black;
 	color: white;
 }
+

@@ -13,11 +13,12 @@ const QuestForm = ({ closeForm, itemName, productId }) => {
 
   var submit = () => {
     var data = {
-      productId: productId,
+      'product_id': productId,
       body: question,
       name: name,
       email: email
     };
+    console.log(data);
     closeForm();
   };
 

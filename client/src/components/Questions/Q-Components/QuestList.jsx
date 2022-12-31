@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Question from './Question.jsx';
 
-const QuestList = ({ questions, openForm }) => {
+const QuestList = ({ questions, openForm, openModal }) => {
   let [rendered, setRendered] = useState([]);
 
   var handleCollapse = () => { setRendered([ questions[0], questions[1] ]); };
@@ -29,6 +29,7 @@ const QuestList = ({ questions, openForm }) => {
               name={q.asker_name}
               answers={q.answers}
               openForm={openForm}
+              openModal={openModal}
             />
           );
         })}

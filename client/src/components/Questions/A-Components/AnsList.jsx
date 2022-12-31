@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Answer from './Answer.jsx';
 
-const AnsList = (props) => {
+const AnsList = ({mixedAns, openModal}) => {
   let [answers, setAnswers] = useState([]);
   let [rendered, setRendered] = useState([]);
 
@@ -13,7 +13,7 @@ const AnsList = (props) => {
   };
 
   useEffect(() => {
-    var ans = Object.values(props.ans);
+    var ans = Object.values(mixedAns);
     var curr = 0;
     var next = 1;
     while (curr < ans.length - 1) {
@@ -31,7 +31,7 @@ const AnsList = (props) => {
     }
     setAnswers(ans);
     setRendered(ans.length > 2 ? [ans[0], ans[1]] : ans);
-  }, [props.ans]);
+  }, [mixedAns]);
 
   return (
     <div id="a-content" className="qna-container">
@@ -40,12 +40,13 @@ const AnsList = (props) => {
           return (
             <Answer
               key={idx}
-              a_ID={a.id}
+              answerId={a.id}
               body={a.body}
               date={a.date}
               helpful={a.helpfulness}
               name={a.answerer_name}
               photos={a.photos}
+              openModal={openModal}
             />
           );
         })}
