@@ -1,4 +1,4 @@
-import { render, screen, waitFor, fireEvent, getByText } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent, getByText, act } from '@testing-library/react';
 import React from 'react';
 import Router from 'react-router-dom';
 import hf from '../client/src/components/Ratings/helperFunctions.js';
@@ -199,17 +199,6 @@ describe('General test of the Ratings component', () => {
 });
 
 describe('Testing of Metareveiws: ', () => {
-  // test('Should filter ratings when a rating bar is clicked', async () => {
-  //   nock('https://localhost:3000')
-  //     .defaultReplyHeaders({
-  //       'access-control-allow-origin': '*',
-  //     })
-  //     .get('/reviews/?product_id=71697&sort=newest&page=1&count=5')
-  //     .reply(200, sampleMeta);
-
-  //   expect(true).toBeTrue;
-  // });
-
   test('Should call the ratings filter function when a rating is clicked', async () => {
     let testClick = 0;
     const { container } = render(<MetaData
@@ -270,7 +259,10 @@ describe('Testing of reviews', () => {
     />, {wrapper: Router});
 
     expect(getByText(container, '(1)', {exact: false})).toBeTruthy();
-    fireEvent.click(container.getElementsByClassName('reviews-helpful')[0]);
+    act(() => {
+      fireEvent.click(container.getElementsByClassName('reviews-helpful')[0]);
+    })
+    console.log(container.getElementsByClassName('reviews-helpful')[0])
     await waitFor(() => {
       expect(getByText(container, '(2)', {exact: false})).toBeTruthy();
       fireEvent.click(container.getElementsByClassName('reviews-helpful')[0]);
