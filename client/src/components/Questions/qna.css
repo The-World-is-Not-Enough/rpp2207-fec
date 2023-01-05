@@ -2,21 +2,24 @@ strong {
   font-weight: bold;
 }
 #qna {
-	border: 2px solid black;
-	border-radius: 5px;
-	margin: 5px 3% 5px 3%;
+	border-top: 1px solid rgb(167, 167, 167);
+	border-bottom: 1px solid rgb(167, 167, 167);
+	/* border-radius: 5px; */
+	margin: 5px 0 5px 0;
+	padding: 10px;
 
 }
 .qna-title {
   color: black;
-  font-size: 25px;
+  font-size: 40px;
 	width: fit-content;
-	margin: auto;
+	/* margin: auto; */
 	padding: 10px;
+	margin-bottom: 10px;
 }
 .qna-container {
-  width: 90%;
-	height: 50%;
+  /* width: 90%;
+	height: 50%; */
   justify-content: center;
 	margin: 5px;
 }
@@ -33,12 +36,13 @@ strong {
 
 /* Search */
 #q-search {
-	width: 90%;
-	background-color: #EEEEEE;
+	width: 85%;
+	/* background-color: #EEEEEE; */
 	margin: auto;
-	border-bottom: 2px solid black;
+	border-bottom: 2px solid #202020;
 	padding: 5px;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
+	margin-left: 25px;
 	border-radius: 2px;
 	font-family: Times, serif;
 }
@@ -47,13 +51,8 @@ strong {
 	font-family: Times, serif;
 	width: 100%;
 	border-style: hidden;
-  background-color: #EEEEEE;
+  /* background-color: #EEEEEE; */
 	color: #202020;
-}
-#q-search-icon {
-	display: inline;
-  color: #202020;
-	padding: 0px 15px 0px 5px;
 }
 
 /* Question List */
@@ -63,19 +62,19 @@ strong {
 	margin: 0 5%;
 }
 .q-btn-wrapper {
-	width: 100%;
-	border-top: 2px solid black;
-	margin-top: 10px;
+	width: fit-content;
+	/* border-top: 2px solid black; */
+	margin-top: 15px;
 	padding: 5px;
 }
 #more-q,
 #collapse-q,
 #add-q {
 	color: black;
-	border: 2px solid black;
+	border: 1px solid black;
 	margin: 5px;
-	border-radius: 5px;
-	padding: 5px;
+	/* border-radius: 5px; */
+	padding: 10px;
 	font-size: 17px;
 }
 #more-q:hover,
@@ -105,21 +104,21 @@ strong {
 	padding-left: 5px;
 }
 #a-list {
-	border-left: 3px solid #939393;
+	border-left: 2px solid black;
 	padding-left: 5px;
 }
 #more-a, #collapse-a {
-	color: #939393;
-	border: 2px solid #939393;
-	border-radius: 5px;
+	color: black;
+	border: 1px solid black;
 	font-size: 14px;
 	margin-right: 5px;
+	padding: 5px;
 }
 
 #more-a:hover,
 #collapse-a:hover {
 	color: white;
-	background-color: #939393;
+	background-color: black;
 }
 
 /* Answer */
@@ -148,34 +147,32 @@ strong {
 	max-width: 80px;
 	max-height: 80px;
 	margin: 5px 10px 0 0;
-	/* padding: 3px; */
-	border: 2px solid #939393;
+	cursor: pointer;
+	/* border: 2px solid #939393; */
 	border-radius: 5px;
 }
 
 .modal-thumbnail-container {
-	border: 2px solid black;
+	border: 1px solid black;
 	width: fit-content;
 	height: auto;
-  justify-content: center;
+  /* justify-content: center; */
 	margin: 40px;
 	background-color: black;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 	z-index: 6;
 	position: fixed;
 	top: 0;
 }
 .modal-thumbnail {
 	max-width: 80vw;
-	max-height: auto;
-	margin: 3px;
-	border-radius: 5px;
+	/* max-height: auto; */
+	/* margin: 3px; */
 }
 #modal-btn {
-	background-color: black;
-	border-radius: 5px;
+	/* background-color: black; */
+	/* border-radius: 5px; */
 	color: white;
-	float: right;
 	position: absolute;
 	margin-right: 5px;
 	font-family: Arial;

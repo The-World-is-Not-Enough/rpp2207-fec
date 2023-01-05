@@ -7,6 +7,8 @@ require('dotenv').config();
 
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(bodyParser());
 
 
 const PATH = 3000;
@@ -185,7 +187,7 @@ app.post('/qa/questions', (req, res) => {
   console.log(req.body);
   var options = {
     method: 'POST',
-    body: JSON.stringify(req.body),
+    body: req.body,
     headers: {
       'Accept': 'application/json, text/plain, */*',
       'Content-Type': 'application/json',

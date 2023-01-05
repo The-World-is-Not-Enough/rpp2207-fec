@@ -53,7 +53,7 @@ const Questions = (props) => {
           />
         </div> : null
       }
-      <h1 className="qna-title">Q & A</h1>
+      <h1 className="qna-title">Questions & Answers</h1>
       <Search handleSearch={handleSearch}/>
       <QuestList
         questions={questions}
