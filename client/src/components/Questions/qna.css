@@ -148,17 +148,40 @@ strong {
 	max-width: 80px;
 	max-height: 80px;
 	margin: 5px 10px 0 0;
-	padding: 3px;
+	/* padding: 3px; */
 	border: 2px solid #939393;
 	border-radius: 5px;
 }
 
 .modal-thumbnail-container {
-	z-index: 5;
+	border: 2px solid black;
+	width: fit-content;
+	height: auto;
+  justify-content: center;
+	margin: 40px;
+	background-color: black;
+	border-radius: 5px;
+	z-index: 6;
 	position: fixed;
-	max-width: 70%;
-	max-height: 70%;
-	right: 0;
+	top: 0;
+}
+.modal-thumbnail {
+	max-width: 80vw;
+	max-height: auto;
+	margin: 3px;
+	border-radius: 5px;
+}
+#modal-btn {
+	background-color: black;
+	border-radius: 5px;
+	color: white;
+	float: right;
+	position: absolute;
+	margin-right: 5px;
+	font-family: Arial;
+	font-weight: bolder;
+	font-size: 17px;
+	cursor: pointer;
 }
 
 /* Help/Report */
@@ -226,7 +249,7 @@ Figure out how to get item name ( Use getProductById in Overview.js )
 #form-close {
 	background-color: black;
 	color: white;
-	float: right;
+	float: left;
 	position: relative;
 	margin-right: 5px;
 	font-family: Arial;
@@ -293,7 +316,7 @@ Figure out how to get item name ( Use getProductById in Overview.js )
 	border-radius: 5px;
 }
 
-#form-close:hover {
+#modal-btn, #form-close:hover {
 	color: red;
 }
 #form-submit:hover {

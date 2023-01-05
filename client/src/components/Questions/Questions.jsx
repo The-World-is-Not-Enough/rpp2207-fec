@@ -42,7 +42,10 @@ const Questions = (props) => {
       }
       {modal ?
         <div className="modal-thumbnail-container">
-          <button onClick={closeModal} className="modal-close">X</button>
+          <button onClick={closeModal}
+            className="btn"
+            id="modal-btn"
+          >X</button>
           <img
             className="modal-thumbnail"
             src={modal}

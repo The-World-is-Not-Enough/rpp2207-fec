@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import questionAPI from '../../../API/Questions.js';
 
 const QuestForm = ({ closeForm, itemName, productId }) => {
   let [question, setQuestion] = useState('');
@@ -16,13 +17,16 @@ const QuestForm = ({ closeForm, itemName, productId }) => {
     if (question === '' || name === '' || email === '') {
       setValid(false);
     } else {
+      console.log(productId);
       var data = {
         'product_id': productId,
         body: question,
         name: name,
         email: email
       };
-      console.log(data);
+      questionAPI.addQuestion(data)
+        .then(() => { console.log('Success'); })
+        .catch(err => { console.log(err); });
       closeForm();
     }
   };

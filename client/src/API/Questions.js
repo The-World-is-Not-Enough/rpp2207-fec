@@ -42,10 +42,12 @@ const questionAPI = {
   },
 
   addQuestion: (data) => {
+    console.log(data);
     var options = {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
+        'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       }
@@ -65,6 +67,7 @@ const questionAPI = {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
+        'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       }

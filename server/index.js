@@ -182,11 +182,14 @@ app.get('/qa/answers/:id', (req, res) => {
 
 // POST Questions
 app.post('/qa/questions', (req, res) => {
+  console.log(req.body);
   var options = {
     method: 'POST',
-    body: req.body,
+    body: JSON.stringify(req.body),
     headers: {
-      'Content-Type': 'application/json'
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      'Authorization': process.env.GITHUB_ACCESS_TOKEN
     }
   };
 
@@ -205,9 +208,11 @@ app.post('/qa/questions', (req, res) => {
 app.post('/qa/answers/:id', (req, res) => {
   var options = {
     method: 'POST',
-    body: req.body,
+    body: JSON.stringify(req.body),
     headers: {
-      'Content-Type': 'application/json'
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      'Authorization': process.env.GITHUB_ACCESS_TOKEN
     }
   };
 
