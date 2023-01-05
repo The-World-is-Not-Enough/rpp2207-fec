@@ -22,6 +22,7 @@ const QuestList = ({ questions, openForm, openModal }) => {
           return (
             <Question
               key={idx}
+              idx={idx}
               questionId={q.question_id}
               body={q.question_body}
               date={q.question_date}
@@ -41,7 +42,7 @@ const QuestList = ({ questions, openForm, openModal }) => {
         {rendered.length > 2 ?
           <button id="collapse-q" className="btn" onClick={handleCollapse}> Collapse Questions </button>
           : null}
-        <button id="add-q" className="btn" onClick={ () => openForm(-1) }>Ask a Question +</button>
+        <button id="add-q" className="btn" onClick={ () => openForm(-2) }>Ask a Question +</button>
       </div>
     </div>
   );

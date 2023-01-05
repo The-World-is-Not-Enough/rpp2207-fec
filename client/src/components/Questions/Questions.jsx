@@ -6,10 +6,9 @@ import QuestForm from './Q-Components/QuestForm.jsx';
 import './qna.css';
 
 const Questions = (props) => {
-  console.log(props.data);
   const data = props.data;
   let [questions, setQuestions] = useState(data.questions);
-  let [form, setForm] = useState(0);
+  let [form, setForm] = useState(-1);
   let [modal, setModal] = useState('');
 
   var handleSearch = (term) => {
@@ -19,21 +18,22 @@ const Questions = (props) => {
     setQuestions(results);
   };
 
-  var openForm = (id) => {
-    console.log(id);
-    setForm(id);
-  };
-  var closeForm = () => { setForm(0); };
+  var openForm = (id) => { setForm(id); };
+  var closeForm = () => { setForm(-1); };
 
   var openModal = (imgUrl) => { setModal(imgUrl); };
   var closeModal = () => { setModal(''); };
 
   return (
     <div id="qna" className="qna-container">
-      {form > 0 ?
-        <AnsForm closeForm={closeForm}/> : null
+      {form > -1 ?
+        <AnsForm
+          closeForm={closeForm}
+          itemName={data.product.name}
+          questionBody={questions[form].question_body}
+        /> : null
       }
-      {form < 0 ?
+      {form < -1 ?
         <QuestForm
           closeForm={closeForm}
           itemName={data.product.name}

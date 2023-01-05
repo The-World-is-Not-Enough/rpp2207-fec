@@ -5,6 +5,7 @@ const AnsForm = ({ closeForm, itemName, questionBody, questionId }) => {
   let [name, setName] = useState('');
   let [email, setEmail] = useState('');
   let [photos, setPhotos] = useState([]);
+  let [valid, setValid] = useState(true);
 
   var handleChange = (type, val) => {
     if (type === 'ans') { setAnswer(val); }
@@ -14,14 +15,18 @@ const AnsForm = ({ closeForm, itemName, questionBody, questionId }) => {
   };
 
   var submit = () => {
-    var data = {
-      body: answer,
-      name: name,
-      email: email,
-      photos: photos
-    };
-    console.log(data, questionId);
-    closeForm();
+    if (answer === '' || name === '' || email === '') {
+      setValid(false);
+    } else {
+      var data = {
+        body: answer,
+        name: name,
+        email: email,
+        photos: photos
+      };
+      console.log(data, questionId);
+      closeForm();
+    }
   };
 
   return (
@@ -33,6 +38,14 @@ const AnsForm = ({ closeForm, itemName, questionBody, questionId }) => {
         <h2 id="form-subtitle">{questionBody}</h2>
       </header>
       <div className="form-body">
+        {!valid ?
+          <div id="invalid-form">
+            You must enter the following
+            {answer === '' ? <p id="invalid-text">Your Answer</p> : null}
+            {name === '' ? <p id="invalid-text">What is your nickname?</p> : null}
+            {email === '' ? <p id="invalid-text">Your email</p> : null}
+          </div>
+          : null}
         <div id="form-question">
           <h3 id="form-label">Your Answer</h3>
           <textarea

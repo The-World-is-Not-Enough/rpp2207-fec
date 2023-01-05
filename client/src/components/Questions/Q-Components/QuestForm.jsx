@@ -4,6 +4,7 @@ const QuestForm = ({ closeForm, itemName, productId }) => {
   let [question, setQuestion] = useState('');
   let [name, setName] = useState('');
   let [email, setEmail] = useState('');
+  let [valid, setValid] = useState(true);
 
   var handleChange = (type, val) => {
     if (type === 'quest') { setQuestion(val); }
@@ -12,14 +13,18 @@ const QuestForm = ({ closeForm, itemName, productId }) => {
   };
 
   var submit = () => {
-    var data = {
-      'product_id': productId,
-      body: question,
-      name: name,
-      email: email
-    };
-    console.log(data);
-    closeForm();
+    if (question === '' || name === '' || email === '') {
+      setValid(false);
+    } else {
+      var data = {
+        'product_id': productId,
+        body: question,
+        name: name,
+        email: email
+      };
+      console.log(data);
+      closeForm();
+    }
   };
 
   return (
@@ -34,6 +39,14 @@ const QuestForm = ({ closeForm, itemName, productId }) => {
         <h2 id="form-subtitle">About the {itemName}</h2>
       </header>
       <div className="form-body">
+        {!valid ?
+          <div id="invalid-form">
+            You must enter the following
+            {question === '' ? <p id="invalid-text">Your Question</p> : null}
+            {name === '' ? <p id="invalid-text">What is your nickname?</p> : null}
+            {email === '' ? <p id="invalid-text">Your email</p> : null}
+          </div>
+          : null}
         <div id="form-question">
           <h3 id="form-label">Your Question</h3>
           <textarea
@@ -68,8 +81,8 @@ const QuestForm = ({ closeForm, itemName, productId }) => {
         <button
           id="form-submit"
           className="btn"
-          onClick={submit}>Submit
-        </button>
+          onClick={submit}
+        >Submit</button>
       </footer>
     </div>
   );
