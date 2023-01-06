@@ -184,10 +184,9 @@ app.get('/qa/answers/:id', (req, res) => {
 
 // POST Questions
 app.post('/qa/questions', (req, res) => {
-  console.log(req.body);
   var options = {
     method: 'POST',
-    body: req.body,
+    body: JSON.stringify(req.body),
     headers: {
       'Accept': 'application/json, text/plain, */*',
       'Content-Type': 'application/json',
@@ -196,8 +195,7 @@ app.post('/qa/questions', (req, res) => {
   };
 
   fetch(`${baseURL}/qa/questions`, options)
-    .then(results => {
-      console.log(results);
+    .then(() => {
       res.sendStatus(201);
     })
     .catch(err => {
@@ -219,7 +217,8 @@ app.post('/qa/answers/:id', (req, res) => {
   };
 
   fetch(`${baseURL}/qa/questions/${req.params.id}/answers`, options)
-    .then(() => {
+    .then(results => {
+      console.log(results);
       res.sendStatus(201);
     })
     .catch(err => {

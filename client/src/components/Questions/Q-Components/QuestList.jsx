@@ -13,7 +13,7 @@ const QuestList = ({ questions, openForm, openModal }) => {
 
   useEffect(() => {
     setRendered(questions.length > 2 ? [questions[0], questions[1]] : questions);
-  }, []);
+  }, [questions]);
 
   return (
     <div id="q-content">

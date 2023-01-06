@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
+import questionAPI from '../../../API/Questions.js';
 
 const AnsForm = ({ closeForm, itemName, questionBody, questionId }) => {
   let [answer, setAnswer] = useState('');
   let [name, setName] = useState('');
   let [email, setEmail] = useState('');
+  let [img, setImg] = useState('');
   let [photos, setPhotos] = useState([]);
   let [valid, setValid] = useState(true);
+  let [upload, setUpload] = useState(false);
 
   var handleChange = (type, val) => {
     if (type === 'ans') { setAnswer(val); }
     if (type === 'name') { setName(val); }
     if (type === 'email') { setEmail(val); }
+    if (type === 'img') { setImg(val); }
     if (type === 'photo') { setPhotos([...photos, val]); }
   };
 
@@ -24,8 +28,17 @@ const AnsForm = ({ closeForm, itemName, questionBody, questionId }) => {
         email: email,
         photos: photos
       };
-      console.log(data, questionId);
+      questionAPI.addAnswer(questionId, data);
       closeForm();
+    }
+  };
+
+  var uploadControl = () => {
+    if (upload) {
+      handleChange('photo', img);
+      setUpload(false);
+    } else {
+      setUpload(true);
     }
   };
 
@@ -75,12 +88,32 @@ const AnsForm = ({ closeForm, itemName, questionBody, questionId }) => {
           />
           <p id="form-below">For authentication reasons, you will not be emailed</p>
         </div>
+        {upload ?
+          <input
+            id="form-input"
+            placeholder="URL"
+            onChange={(e) => handleChange('img', e.target.value)}
+          ></input>
+          : null}
+        {photos.length < 5 ?
+          <button id="form-upload"
+            className="btn"
+            onClick={uploadControl}
+          >{upload ? 'Upload' : 'Upload Photos'}</button>
+          : null}
         <div id="form-photos">
-          {photos.length < 5 ?
-            <button id="form-upload" className="btn">Upload Photo</button>
-            : null}
-          {/* onClick will open a second modal where you will input your link */}
+          {photos.map((photo, idx) => {
+            return (
+              <img
+                key={idx}
+                className="thumbnail"
+                src={photo}
+                alt=""
+              />
+            );
+          })}
         </div>
+        {}
       </div>
       <footer className="form-footer">
         <button

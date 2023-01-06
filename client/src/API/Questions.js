@@ -73,7 +73,7 @@ const questionAPI = {
       }
     };
 
-    fetch('/qa/answers', options)
+    fetch(`/qa/answers/${questionId}`, options)
       .then(results => {
         console.log(results);
       })

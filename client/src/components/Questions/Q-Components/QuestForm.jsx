@@ -19,14 +19,12 @@ const QuestForm = ({ closeForm, itemName, productId }) => {
     } else {
       console.log(productId);
       var data = {
-        'product_id': productId,
+        'product_id': parseInt(productId),
         body: question,
         name: name,
         email: email
       };
-      questionAPI.addQuestion(data)
-        .then(() => { console.log('Success'); })
-        .catch(err => { console.log(err); });
+      questionAPI.addQuestion(data);
       closeForm();
     }
   };

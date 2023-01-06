@@ -6,7 +6,7 @@ import QuestForm from './Q-Components/QuestForm.jsx';
 import './qna.css';
 
 const Questions = (props) => {
-  const data = props.data;
+  var data = props.data;
   let [questions, setQuestions] = useState(data.questions);
   let [form, setForm] = useState(-1);
   let [modal, setModal] = useState('');
@@ -31,6 +31,7 @@ const Questions = (props) => {
           closeForm={closeForm}
           itemName={data.product.name}
           questionBody={questions[form].question_body}
+          questionId={questions[form].question_id}
         /> : null
       }
       {form < -1 ?

@@ -4,7 +4,6 @@ strong {
 #qna {
 	border-top: 1px solid rgb(167, 167, 167);
 	border-bottom: 1px solid rgb(167, 167, 167);
-	/* border-radius: 5px; */
 	margin: 5px 0 5px 0;
 	padding: 10px;
 
@@ -13,13 +12,10 @@ strong {
   color: black;
   font-size: 40px;
 	width: fit-content;
-	/* margin: auto; */
 	padding: 10px;
 	margin-bottom: 10px;
 }
 .qna-container {
-  /* width: 90%;
-	height: 50%; */
   justify-content: center;
 	margin: 5px;
 }
@@ -37,7 +33,6 @@ strong {
 /* Search */
 #q-search {
 	width: 85%;
-	/* background-color: #EEEEEE; */
 	margin: auto;
 	border-bottom: 2px solid #202020;
 	padding: 5px;
@@ -51,7 +46,6 @@ strong {
 	font-family: Times, serif;
 	width: 100%;
 	border-style: hidden;
-  /* background-color: #EEEEEE; */
 	color: #202020;
 }
 
@@ -63,7 +57,6 @@ strong {
 }
 .q-btn-wrapper {
 	width: fit-content;
-	/* border-top: 2px solid black; */
 	margin-top: 15px;
 	padding: 5px;
 }
@@ -73,7 +66,6 @@ strong {
 	color: black;
 	border: 1px solid black;
 	margin: 5px;
-	/* border-radius: 5px; */
 	padding: 10px;
 	font-size: 17px;
 }
@@ -148,37 +140,40 @@ strong {
 	max-height: 80px;
 	margin: 5px 10px 0 0;
 	cursor: pointer;
-	/* border: 2px solid #939393; */
 	border-radius: 5px;
 }
 
 .modal-thumbnail-container {
-	border: 1px solid black;
 	width: fit-content;
 	height: auto;
-  /* justify-content: center; */
 	margin: 40px;
-	background-color: black;
-	/* border-radius: 5px; */
+	background-color: white;
 	z-index: 6;
 	position: fixed;
 	top: 0;
 }
 .modal-thumbnail {
 	max-width: 80vw;
-	/* max-height: auto; */
-	/* margin: 3px; */
+	max-height: 80vh;
+	border: 1px solid black;
 }
 #modal-btn {
-	/* background-color: black; */
-	/* border-radius: 5px; */
-	color: white;
+	background-color: white;
+	border-radius: 50%;
+	border: 1px solid black;
+	color: black;
 	position: absolute;
-	margin-right: 5px;
+	margin: 5px 5px;
 	font-family: Arial;
 	font-weight: bolder;
 	font-size: 17px;
 	cursor: pointer;
+	padding-top: 2px;
+	z-index: 7;
+}
+#modal-btn:hover {
+	background-color: black;
+	color: white;
 }
 
 /* Help/Report */
@@ -208,17 +203,13 @@ strong {
 }
 
 #yes-btn:hover {
-	color: #2ACC4D;
+	color: #22ad40;
 }
 #report-btn:hover {
-	color: red;
+	color: rgb(200, 0, 0);
 }
 
-/*
-Possible switch the design to something more like the main qna
-Find way to darken background when on modal
-Figure out how to get item name ( Use getProductById in Overview.js )
-*/
+/* Form */
 .form {
 	border: 2px solid black;
 	width: 60%;
@@ -227,7 +218,6 @@ Figure out how to get item name ( Use getProductById in Overview.js )
 	margin: 40px 20% 20% 20%;
 	background-color: black;
 	font-family: Times, serif;
-	border-radius: 5px;
 	z-index: 6;
 	position: fixed;
 	top: 0;
@@ -239,20 +229,21 @@ Figure out how to get item name ( Use getProductById in Overview.js )
 }
 .form-body {
 	background-color: white;
-	border-radius: 3px;
 	padding: 10px;
 }
 
 #form-close {
 	background-color: black;
+	border-radius: 50%;
 	color: white;
 	float: left;
 	position: relative;
-	margin-right: 5px;
+	margin-left: 5px;
 	font-family: Arial;
 	font-weight: bolder;
 	font-size: 17px;
 	cursor: pointer;
+	padding-top: 2px;
 }
 #form-title {
 	margin: auto;
@@ -287,7 +278,6 @@ Figure out how to get item name ( Use getProductById in Overview.js )
   background-color: #EEEEEE;
 	color: #202020;
 	padding: 5px;
-	border-radius: 2px;
 	border-bottom: 2px solid black;
 }
 #form-below {
@@ -301,20 +291,20 @@ Figure out how to get item name ( Use getProductById in Overview.js )
 	font-size: 17px;
 	background-color: black;
 	color: white;
-	border: 2px solid white;
-	border-radius: 5px;
 	padding: 5px;
 	font-family: Times, serif;
+	border: 1px solid white;
 }
 #form-upload {
 	font-size: 14px;
 	font-family: Times, serif;
-	border: 2px solid black;
-	border-radius: 5px;
+	padding: 5px;
+	border: 1px solid black;
 }
 
-#modal-btn, #form-close:hover {
-	color: red;
+#form-close:hover {
+	color: black;
+	background-color: white;
 }
 #form-submit:hover {
 	background-color: white;
@@ -324,4 +314,3 @@ Figure out how to get item name ( Use getProductById in Overview.js )
 	background-color: black;
 	color: white;
 }
-
