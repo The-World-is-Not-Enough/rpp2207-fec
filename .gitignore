@@ -6,4 +6,5 @@ coverage/
 config/
 fontawesome-free-5.15.4-web/
 fec-data.pem
-
+fec2.pem
+.DS_Store
