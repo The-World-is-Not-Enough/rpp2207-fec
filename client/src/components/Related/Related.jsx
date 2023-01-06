@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import relatedAPI from '../../API/Related.js';
+import overviewAPI from '../../API/Overview.js';
 import RelatedProducts from './RelatedProducts.jsx';
 import YourOutfit from './YourOutfit.jsx';
 import './related.css';

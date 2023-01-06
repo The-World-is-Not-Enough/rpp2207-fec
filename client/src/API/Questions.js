@@ -42,10 +42,12 @@ const questionAPI = {
   },
 
   addQuestion: (data) => {
+    console.log(data);
     var options = {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
+        'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       }
@@ -65,12 +67,13 @@ const questionAPI = {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
+        'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       }
     };
 
-    fetch('/qa/answers', options)
+    fetch(`/qa/answers/${questionId}`, options)
       .then(results => {
         console.log(results);
       })

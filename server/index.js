@@ -252,15 +252,16 @@ app.get('/qa/answers/:id', (req, res) => {
 app.post('/qa/questions', (req, res) => {
   var options = {
     method: 'POST',
-    body: req.body,
+    body: JSON.stringify(req.body),
     headers: {
-      'Content-Type': 'application/json'
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      'Authorization': process.env.GITHUB_ACCESS_TOKEN
     }
   };
 
   fetch(`${baseURL}/qa/questions`, options)
-    .then(results => {
-      console.log(results);
+    .then(() => {
       res.sendStatus(201);
     })
     .catch(err => {
@@ -273,14 +274,17 @@ app.post('/qa/questions', (req, res) => {
 app.post('/qa/answers/:id', (req, res) => {
   var options = {
     method: 'POST',
-    body: req.body,
+    body: JSON.stringify(req.body),
     headers: {
-      'Content-Type': 'application/json'
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      'Authorization': process.env.GITHUB_ACCESS_TOKEN
     }
   };
 
   fetch(`${baseURL}/qa/questions/${req.params.id}/answers`, options)
-    .then(() => {
+    .then(results => {
+      console.log(results);
       res.sendStatus(201);
     })
     .catch(err => {

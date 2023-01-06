@@ -4,5 +4,8 @@ node_modules
 client/dist/
 coverage/
 fontawesome-free-5.15.4-web/
+fec-data.pem
+fec2.pem
+.DS_Store
 fec2.pem
 .DS_Store
