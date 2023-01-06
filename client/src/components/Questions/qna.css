@@ -2,11 +2,8 @@ strong {
   font-weight: bold;
 }
 #qna {
-	border-top: 1px solid rgb(167, 167, 167);
-	border-bottom: 1px solid rgb(167, 167, 167);
 	margin: 5px 0 5px 0;
 	padding: 10px;
-
 }
 .qna-title {
   color: black;
